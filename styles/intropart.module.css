@@ -1,0 +1,19 @@
+.main__container{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+}
+.content__container{
+
+}
+.content__container p{
+    text-align: justify;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+}
+.swipper__container{
+    margin-right: 1rem;
+}
+

@@ -1,0 +1,26 @@
+.container{
+    background-color: #6c63ff;
+    color: white;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.logo{
+    padding-left: 2rem;
+}
+.navlinks{
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.navlinks a{
+    font-weight: 500;
+    font-size: 1.3rem;
+    transition: color ease 600ms;
+}
+.navlinks a:hover{
+    color: #ffb116;
+}

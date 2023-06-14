@@ -1,0 +1,52 @@
+.container{
+    background-color: whitesmoke;
+
+}
+.notes__container{
+    padding: 2rem 1rem;
+    padding-bottom: 5rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 35% 65%;
+}
+.notes__container h1{
+    margin: 1rem 0;
+}
+.notes__container p{
+    line-height: 1.8rem;
+    text-align: justify;
+}
+.notes__container a{
+    color: red;
+}
+.notes__container h1{
+    margin: 1rem 0;
+}
+.left__container{
+
+}
+.right__container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-right: 2rem;
+}
+
+.card{
+    width: 25rem;
+    height: 12rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    transition: all 500ms ease;
+}
+
+.card img{
+    width: 60px;
+    height: 60px;
+}
+.card:hover{
+    cursor: pointer;
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
