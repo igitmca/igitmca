@@ -1,8 +1,9 @@
 .container{
     background-color: #6c63ff;
     color: white;
-    display: grid;
-    grid-template-columns: 30% 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
 }
 .logo{
     padding-left: 2rem;
@@ -23,4 +24,40 @@
 }
 .navlinks a:hover{
     color: #ffb116;
+}
+
+.dropdown{
+    display: none;
+}
+.dropdown__content{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all ease 500ms;
+}
+@media only screen and (max-width: 640px) {
+    .dropdown{
+        display: block;
+    }
+    .container{
+        display: block;
+    }
+    .head{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .navlinks{
+        flex-direction: column;
+        margin-right: 0;
+        padding: 1rem 0;
+    }
+    .dropdown__content.active{
+        display: block;
+    }
+    .dropdown__content.inactive{
+        display: none;
+        transition: all ease 500ms;
+    }
 }

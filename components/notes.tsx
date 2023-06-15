@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { semester } from '@/utils/semesterList';
 
+
 const NotesComp = () => {
+
     return (
         <>
             <div className={styles.container}>
@@ -17,11 +19,15 @@ const NotesComp = () => {
                     <div className={styles.right__container}>
                         {
                             semester.map(sem =>
-                                <div key={sem.title} className={styles.card}>
-                                    <Image src={sem.icon} width={200} height={200} alt="semester icon" />
-                                    <h3>{sem.title}</h3>
-                                    <p>{sem.desc}</p>
-                                </div>)
+                                <>
+                                    <Link href={`notes/${sem.path}`} key={sem.path}>
+                                        <div key={sem.title} className={styles.card} >
+                                            <Image src={sem.icon} width={200} height={200} alt="semester icon" />
+                                            <h3>{sem.title}</h3>
+                                            <p>{sem.desc}</p>
+                                        </div>
+                                    </Link>
+                                </>)
                         }
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import Logo from '@/public/images/logo.png'
 import { navlist } from '@/utils/navbarlist'
 import styles from '@/styles/navbar.module.css'
+import { IconButton } from '@mui/material';
 
 const Navbar = () => {
   const [isNavShowing, setIsNavShowing] = useState(false);
@@ -13,25 +14,31 @@ const Navbar = () => {
   return (
     <nav>
       <div className={styles.container}>
-        {/* <button className='nav__toggle__btn' onClick={() => { setIsNavShowing((prev) => !prev); }}>
-          {isNavShowing ? <Close /> : <Menu />}
-        </button> */}
-        <Link href='/' className={styles.logo}>
-          <Image src={Logo} width={50} height={50} alt='IGIT MCA' onClick={() => setIsNavShowing(false)} />
-        </Link>
-        <ul className={styles.navlinks}>
-          {
-            navlist.map(list => {
-              return (
-                <li key={list.name}>
-                  <Link href={list.href} className='' onClick={() => setIsNavShowing((prev) => !prev)}>
-                    {list.name}
-                  </Link>
-                </li>
-              )
-            })
-          }
-        </ul>
+        <div className={styles.head}>
+          <Link href='/' className={styles.logo}>
+            <Image src={Logo} width={50} height={50} alt='IGIT MCA' onClick={() => setIsNavShowing(false)} />
+          </Link>
+          <div className={styles.dropdown}>
+            <IconButton onClick={() => setIsNavShowing(prev => !prev)}>
+              <Menu />
+            </IconButton>
+          </div>
+        </div>
+        <div className={`${styles.dropdown__content} ${isNavShowing ? styles.active : styles.inactive}`}>
+          <ul className={styles.navlinks}>
+            {
+              navlist.map(list => {
+                return (
+                  <li onClick={() => setIsNavShowing((prev) => !prev)} key={list.href}>
+                    <Link href={list.href}  >
+                      {list.name}
+                    </Link>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
       </div>
     </nav>
   )

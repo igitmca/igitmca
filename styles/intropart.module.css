@@ -1,19 +1,32 @@
-.main__container{
+.main__container {
     display: grid;
     grid-template-columns: 40% 60%;
     align-items: center;
     gap: 1rem;
     padding: 1rem 2rem;
 }
-.content__container{
 
-}
-.content__container p{
+.content__container {}
+
+.content__container p {
     text-align: justify;
     line-height: 1.5rem;
     margin: 1rem 0;
 }
-.swipper__container{
+
+.swipper__container {
     margin-right: 1rem;
 }
 
+@media only screen and (max-width: 640px) {
+    .main__container {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    .content__container{
+        width: 24rem;
+    }
+    .swipper__container {
+        width: 24rem;
+    }
+}

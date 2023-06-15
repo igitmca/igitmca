@@ -35,7 +35,13 @@ const Carousel = () => {
         pauseOnHover: false,
         resetProgress: false,
         perPage:1 ,
-       
+        height:'28rem',
+        breakpoints:{
+            640:{
+                height:'20rem',
+                arrows:false
+            }
+        }
     }
     return (
         <CardContainer>
@@ -43,10 +49,10 @@ const Carousel = () => {
                 hasTrack={false}>
                 <SplideTrack>
                     {
-                        homeImage.map(item =>
-                            <SplideSlide key={item} >
+                        homeImage.map((item,index) =>
+                            <SplideSlide key={index} >
                                 <Card>
-                                    <Image width={740} height={380} src={item} alt="Carousel Image" />
+                                    <Image width={200} height="0"  src={item} alt="Carousel Image" />
                                 </Card>
                             </SplideSlide>)
                     }
@@ -62,8 +68,15 @@ const Card=styled.div`
     background-color: white;
     margin: 3rem 2rem;
     img{
+        width: 100%;
+        height: 24rem;
         box-shadow: rgba(255, 59, 10, 0.781) 0px 2px 20px 0px;
     }
+@media only screen and (max-width: 640px) {
+    img{
+        height: 15rem;
+    }
+}
 `;
 const CardContainer=styled.div`
 `

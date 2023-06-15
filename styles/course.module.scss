@@ -7,6 +7,10 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 1.5rem;
+    @media screen and (max-width: 640px) {
+        grid-template-columns: 100%;
+        padding-bottom: 10rem;
+    }
 }
 .course{
     width: 22rem;
