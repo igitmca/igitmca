@@ -30,6 +30,20 @@ export class FireStoreCollection {
         return `${this.collectionName}/${newRef}`;
     }
 
+    getSingleDoc = async (id:string, customCollectionName?:string) => {
+        try {
+            const docRef = doc(firestoreDB, customCollectionName ?? this.collectionName, id);
+            const docData = await getDoc(docRef);
+            if (docData.exists()) 
+                return docData.data() 
+            // My custom Error Gandi Munda Andharr >.< 
+            else throw Error("Invalid Id in the Collection");
+        } catch (err) {
+            throw err;
+            // throw Error("Error in data fetching")
+        }
+    }
+
    
 }
 

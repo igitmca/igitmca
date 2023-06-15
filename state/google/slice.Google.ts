@@ -15,12 +15,19 @@ const initialState = {
 const googleSlice = createSlice({
     name: "Auth",
     initialState: () => {
-        const localAuth = localStorage.getItem("googleAuth");
+        let localAuth=undefined;
+        let load=undefined;
+        if (typeof window !== 'undefined') {
+            localAuth = localStorage.getItem("googleAuth");
+        }
         if (localAuth === null) {
             return initialState;
         }
-        const load = JSON.parse(localAuth);
-        const { accessToken, displayName, emailVerified, isAnonymous, photoURL, email, uid } = load;
+        if (localAuth) {
+            load = JSON.parse(localAuth);
+        }
+        const { accessToken, displayName, emailVerified, isAnonymous, photoURL, email, uid } = load || {};
+        
         return {
             accessToken, displayName, emailVerified, isAnonymous, photoURL, email, uid
         };

@@ -31,14 +31,20 @@ export const userInitialState:StateType = {
 const userSlice = createSlice({
     name: "User",
     initialState: () => {
-        const localUser = localStorage.getItem("UserAuth");
+        let localUser=undefined;
+        let userData=undefined;
+        if (typeof window !== 'undefined') {
+             localUser = localStorage.getItem("UserAuth");
+        }
         if (localUser === null) {
             return userInitialState;
         }
-        const userData = JSON.parse(localUser);
+        if(localUser){
+            userData = JSON.parse(localUser);
+        }
         const {
             name, email, contact, rollNumber, profilePic, batch, linkedIn, insta, company,admin
-        } = userData;
+        } = userData || {};
         return {
             name,
             email,

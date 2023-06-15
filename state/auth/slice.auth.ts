@@ -1,16 +1,20 @@
 'use client'
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState={
-    isLoggedIn:false,
+const initialState = {
+    isLoggedIn: false,
     isVerifyed: false,
 }
 
 const authSlice = createSlice({
     name: 'Auth',
     initialState: () => {
-        const localLoginData = localStorage.getItem("isLoggedIn");
-        const localVerificationData = localStorage.getItem("isVerifyed");
+        let localLoginData = undefined
+        let localVerificationData = undefined
+        if (typeof window !== 'undefined') {
+            localLoginData = localStorage.getItem("isLoggedIn");
+            localVerificationData = localStorage.getItem("isVerifyed");
+        }
         if (localLoginData === null) {
             localStorage.setItem("isLoggedIn", "false");
             return initialState;
@@ -31,16 +35,16 @@ const authSlice = createSlice({
             localStorage.setItem("isLoggedIn", "false");
             localStorage.setItem("isVerifyed", "false");
         },
-        userVerifyed: (state) =>{
+        userVerifyed: (state) => {
             state.isVerifyed = true;
             localStorage.setItem("isVerifyed", "true");
         },
-        unverifyUser:(state)=>{
-            state.isVerifyed=false
+        unverifyUser: (state) => {
+            state.isVerifyed = false
             localStorage.setItem("isVerifyed", "false");
         }
     }
 });
 const authReducer = authSlice.reducer;
 export default authReducer;
-export const { userLoggedIn, userLoggedOut, userVerifyed ,unverifyUser} = authSlice.actions;
+export const { userLoggedIn, userLoggedOut, userVerifyed, unverifyUser } = authSlice.actions;
